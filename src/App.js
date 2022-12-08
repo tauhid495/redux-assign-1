@@ -14,13 +14,13 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/post' element={<Post/>}/>
-          <Route path='/history' element={<History/>}/>
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/post' element={<Post />} />
+          <Route path='/history' element={<History />} />
           <Route path='/dashboard' element={<Dashboard />}>
-            <Route path='bloglist'element={<BlogLIst/>}/>
-            <Route index element={<BlogLIst/>}/>
+            <Route path='bloglist' element={<BlogLIst />} />
+            <Route index element={<BlogLIst />} />
           </Route>
         </Routes>
       </BrowserRouter>

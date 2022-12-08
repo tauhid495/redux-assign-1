@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import ProductCard from './ProductCard';
 
 const Home = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/products').then(res => res.json())
+            .then(data => setProducts(data.data));
+    }, []);
+
+    const state = useSelector((state) => state);
+    console.log(state);
+
     return (
-        <div className='text-center'>
-            home page
+        <div className='grid grid-cols-2'>
+            {
+                products.map((product) => <ProductCard product={product} key={product._id} />)
+            }
         </div>
     );
 };
