@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import loadBlogData from '../Redux/thunk/fetchBlogs';
 import ProductCard from './ProductCard';
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
-
+    const blogs = useSelector((state) => state.blog.blogs)
+    const dispatch = useDispatch();
     useEffect(() => {
-        fetch('http://localhost:5000/products').then(res => res.json())
-            .then(data => setProducts(data.data));
+        dispatch(loadBlogData());
     }, []);
 
     const state = useSelector((state) => state);
@@ -16,7 +17,7 @@ const Home = () => {
     return (
         <div className='grid grid-cols-2'>
             {
-                products.map((product) => <ProductCard product={product} key={product._id} />)
+                blogs.map((product) => <ProductCard product={product} key={product._id} />)
             }
         </div>
     );

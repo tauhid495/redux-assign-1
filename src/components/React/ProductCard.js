@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToHistory } from '../Redux/actionCreator/actionCreator';
-import { ADD_TO_HISTORY } from '../Redux/actionTypes/actionTypes';
+
 
 const ProductCard = ({ product }) => {
 
