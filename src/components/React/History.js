@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Post = () => {
+const History = () => {
     return (
         <div>
-            Post A blog
+            History
         </div>
     );
 };
 
-export default Post;
+export default History;
