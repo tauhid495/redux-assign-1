@@ -1,15 +1,21 @@
-import { ADD_TO_HISTORY, LOAD_BLOG } from "../actionTypes/actionTypes"
+import { ADD_TO_HISTORY, LOAD_BLOG, POST_BLOG } from "../actionTypes/actionTypes"
 
-export const addToHistory = (product) => {
+export const addToHistory = (blog) => {
     return {
         type: ADD_TO_HISTORY,
-        payload: product,
+        payload: blog,
     }
 };
 
 export const loadBlog = (data) => {
     return {
         type: LOAD_BLOG,
+        payload: data,
+    };
+};
+export const postBlog = (data) => {
+    return {
+        type: POST_BLOG,
         payload: data,
     };
 };

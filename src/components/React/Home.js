@@ -12,12 +12,12 @@ const Home = () => {
     }, []);
 
     const state = useSelector((state) => state);
-    console.log(state);
+    // console.log(state);
 
     return (
         <div className='grid grid-cols-2'>
             {
-                blogs.map((product) => <ProductCard product={product} key={product._id} />)
+                blogs.map((blog) => <ProductCard blog={blog} key={blog._id} />)
             }
         </div>
     );

@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import ProductCard from './ProductCard';
 
 const History = () => {
-    const histories = useSelector((state) => state.blog.history);
-    console.log(histories);
+    const blogs = useSelector((state) => state.blog.history);
+    console.log(blogs);
     return (
         <div>
             {
-                histories.map((product) => <ProductCard product={product} />)
+                blogs.map((blog) => <ProductCard blog={blog} />)
             }
         </div>
     );

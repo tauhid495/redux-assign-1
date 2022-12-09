@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/React/Navbar';
 import Home from './components/React/Home';
-import Post from './components/React/Post';
+import PostBlog from './components/React/PostBlog';
 import History from './components/React/History';
 import Dashboard from './components/React/Dashboard';
 import BlogLIst from './components/React/BlogLIst';
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
-          <Route path='/post' element={<Post />} />
+          <Route path='/post' element={<PostBlog />} />
           <Route path='/history' element={<History />} />
           <Route path='/dashboard' element={<Dashboard />}>
             <Route path='bloglist' element={<BlogLIst />} />

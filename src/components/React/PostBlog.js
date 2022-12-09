@@ -1,21 +1,30 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import postBlogData from '../Redux/thunk/postBlogData';
 
 const Post = () => {
 
-    const { register, handleSubmit } = useForm();
+    const dispatch = useDispatch();
+
+    const { register, handleSubmit, reset } = useForm();
     const Submit = (data) => {
-        const product = {
+        const blog = {
             name: data.name,
             occupation: data.occupation,
             subject: data.subject,
             date: data.date,
-            brand: data.brand,
-            image:data.image,
-            spec: [],
-        };
+            gender: data.gender,
+            image: data.image,
+            textarea: data.textarea,
+            status: data.status === "true" ? true : false,
 
-        console.log(product);
+        };
+        console.log(blog);
+        dispatch(postBlogData(blog));
+
+        reset();
     };
 
     return (
@@ -51,15 +60,15 @@ const Post = () => {
                     </label>
                     <input className='input input-bordered' type='date' id='date' {...register("date")} />
                 </div>
-                
+
 
                 <div className='flex flex-col w-full max-w-xs'>
-                    <label className='mb-3' htmlFor='brand'>
-                        Brand
+                    <label className='mb-3' htmlFor='gender'>
+                        Gender
                     </label>
-                    <select className='input input-bordered' name='brand' id='brand' {...register("brand")}>
-                        <option value='amd'>AMD</option>
-                        <option value='intel'>Intel</option>
+                    <select className='input input-bordered' name='gender' id='gender' {...register("gender")}>
+                        <option value='male'>Male</option>
+                        <option value='female'>Female</option>
                     </select>
                 </div>
                 <div className='flex flex-col w-full max-w-xs'>
@@ -67,6 +76,13 @@ const Post = () => {
                         Image
                     </label>
                     <input className='input input-bordered' type='text' name='image' id='image' {...register("image")} />
+                </div>
+
+                <div className='flex flex-col w-full max-w-xs'>
+                    <label className='mb-2' htmlFor='textarea'>
+                        Description
+                    </label>
+                    <textarea className='input input-bordered' type='textarea' id='text' {...register("textarea")} />
                 </div>
 
                 <div className='flex text-start w-1/2 '>
@@ -80,7 +96,7 @@ const Post = () => {
                                 {...register("status")}
                             />
                             <label className='ml-2 text-lg' htmlFor='adult'>
-                                over 18 years
+                                18 years
                             </label>
                         </div>
                         <div>
@@ -92,13 +108,13 @@ const Post = () => {
                                 {...register("status")}
                             />
                             <label className='ml-2 text-lg' htmlFor='child'>
-                                under 18 years
+                                bellow 18 years
                             </label>
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col w-full max-w-xs'></div>
-                
+
+
                 <div className='flex justify-between items-center w-full'>
                     <button
                         className='btn btn-primary'
