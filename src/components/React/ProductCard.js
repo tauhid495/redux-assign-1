@@ -6,13 +6,13 @@ import { addToHistory } from '../Redux/actionCreator/actionCreator';
 const ProductCard = ({ blog }) => {
 
     const dispatch = useDispatch();
-    console.log(blog);
+    // console.log(blog._id);
     return (
         <div className='border-2 rounded-2xl m-5 p-5  flex'>
             <div className='w-1/3'>
                 <div className="avatar">
                     <div className="w-24 rounded-full">
-                        <img src="https://placeimg.com/192/192/people" />
+                        <img src={blog.image} />
                     </div>
                 </div>
                 <div>{blog.name}</div>

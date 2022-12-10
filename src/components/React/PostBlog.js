@@ -21,7 +21,7 @@ const Post = () => {
             status: data.status === "true" ? true : false,
 
         };
-        console.log(blog);
+        // console.log(blog);
         dispatch(postBlogData(blog));
 
         reset();
@@ -96,7 +96,7 @@ const Post = () => {
                                 {...register("status")}
                             />
                             <label className='ml-2 text-lg' htmlFor='adult'>
-                                18 years
+                                18+ years
                             </label>
                         </div>
                         <div>
