@@ -23,7 +23,9 @@ const blogReducer = (state = initialState, action) => {
         case LOAD_BLOG_ID:
             return {
                 ...state,
-                blogs: action.payload,
+                blogs: state.blogs.filter(
+                    (blog) => blog._id === action.payload
+                )
             };
 
 

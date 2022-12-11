@@ -13,10 +13,10 @@ export const loadBlog = (data) => {
         payload: data,
     };
 };
-export const loadBlogbyId = (data) => {
+export const loadBlogbyId = (id) => {
     return {
         type: LOAD_BLOG_ID,
-        payload: data,
+        payload: id,
     };
 };
 

@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addToHistory } from '../Redux/actionCreator/actionCreator';
-// import LoadBlogIdData from '../Redux/thunk/LoadBlogbyId';
+import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
+
+
 
 
 const ProductCardFull = () => {
-    const [blog, setBlog] = useState([]);
     const { id } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/blog/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setBlog(data)
-                dispatch(addToHistory(data))
-            })
+        dispatch(loadBlogbyId(id));
 
     }, [])
+    const blog = useSelector((state) => state.blog.blogs[0]);
 
-    // console.log(blog.name);
+    // console.log(blog);
 
     return (
         <div className='border-2 rounded-2xl m-5 p-5  flex'>

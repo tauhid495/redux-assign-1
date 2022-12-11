@@ -4,12 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import { addToHistory } from '../Redux/actionCreator/actionCreator';
 
 
-const ProductCard = ({ blog }) => {
+
+const ProductCard = ({ blog, history }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // console.log(blog._id);
+    const handlenavigate = (blog) => {
+
+        dispatch(addToHistory(blog))
+        navigate(`/blog/${blog._id}`)
+    };
+
+    // console.log(blog.image);
     return (
         <div className='border-2 rounded-2xl m-5 p-5  flex'>
             <div className='w-1/3'>
@@ -27,8 +34,10 @@ const ProductCard = ({ blog }) => {
 
             <div className='w-2/3'>
                 <div>{blog.textarea.slice(0, 300)}...</div> <br />
-                {/* <div onClick={() => dispatch(addToHistory(blog))} className='btn btn-sm btn-primary'>Add to History</div> */}
-                <div onClick={() => navigate(`/blog/${blog._id}`)} className='btn btn-sm btn-primary'>Read More</div>
+
+                {history &&
+                    <div onClick={() => handlenavigate(blog)} className='btn btn-sm btn-primary'>Read More</div>
+                }
             </div>
         </div>
     );
