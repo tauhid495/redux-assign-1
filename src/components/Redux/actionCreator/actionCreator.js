@@ -1,4 +1,4 @@
-import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, POST_BLOG } from "../actionTypes/actionTypes"
+import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, LOAD_BLOG_ID, POST_BLOG } from "../actionTypes/actionTypes"
 
 export const addToHistory = (blog) => {
     return {
@@ -13,6 +13,13 @@ export const loadBlog = (data) => {
         payload: data,
     };
 };
+export const loadBlogbyId = (data) => {
+    return {
+        type: LOAD_BLOG_ID,
+        payload: data,
+    };
+};
+
 export const postBlog = (data) => {
     return {
         type: POST_BLOG,

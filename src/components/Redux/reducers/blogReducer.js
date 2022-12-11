@@ -1,4 +1,4 @@
-import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, POST_BLOG } from "../actionTypes/actionTypes";
+import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, LOAD_BLOG_ID, POST_BLOG } from "../actionTypes/actionTypes";
 
 const initialState = {
     history: [],
@@ -19,6 +19,13 @@ const blogReducer = (state = initialState, action) => {
                 ...state,
                 blogs: action.payload,
             };
+
+        case LOAD_BLOG_ID:
+            return {
+                ...state,
+                blogs: action.payload,
+            };
+
 
         case POST_BLOG:
             return {

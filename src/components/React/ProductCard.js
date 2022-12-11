@@ -1,11 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addToHistory } from '../Redux/actionCreator/actionCreator';
 
 
 const ProductCard = ({ blog }) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     // console.log(blog._id);
     return (
         <div className='border-2 rounded-2xl m-5 p-5  flex'>
@@ -23,8 +26,9 @@ const ProductCard = ({ blog }) => {
             <div className="divider divider-horizontal"></div>
 
             <div className='w-2/3'>
-                <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                <div onClick={() => dispatch(addToHistory(blog))} className='btn btn-primary'>Add to History</div>
+                <div>{blog.textarea.slice(0, 300)}...</div> <br />
+                {/* <div onClick={() => dispatch(addToHistory(blog))} className='btn btn-sm btn-primary'>Add to History</div> */}
+                <div onClick={() => navigate(`/blog/${blog._id}`)} className='btn btn-sm btn-primary'>Read More</div>
             </div>
         </div>
     );

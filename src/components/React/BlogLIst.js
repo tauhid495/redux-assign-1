@@ -13,7 +13,7 @@ const BlogLIst = () => {
     }, []);
 
     // const state = useSelector((state) => state);
-    // console.log(blogs);
+    console.log(blogs);
     return (
         <div className='flex flex-col justify-center items-center h-full w-full '>
             <div className='w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200'>

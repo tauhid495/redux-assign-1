@@ -7,6 +7,8 @@ import PostBlog from './components/React/PostBlog';
 import History from './components/React/History';
 import Dashboard from './components/React/Dashboard';
 import BlogLIst from './components/React/BlogLIst';
+import ProductCardFull from './components/React/ProductCardFull';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/post' element={<PostBlog />} />
           <Route path='/history' element={<History />} />
+          <Route path='/blog/:id' element={<ProductCardFull />} />
           <Route path='/dashboard' element={<Dashboard />}>
             <Route path='bloglist' element={<BlogLIst />} />
             <Route index element={<BlogLIst />} />

@@ -11,7 +11,7 @@ const Home = () => {
         dispatch(loadBlogData());
     }, []);
 
-    const state = useSelector((state) => state);
+    // const state = useSelector((state) => state);
     // console.log(state);
 
     return (
