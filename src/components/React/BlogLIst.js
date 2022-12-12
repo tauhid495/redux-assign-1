@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import loadBlogData from '../Redux/thunk/fetchBlogs';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import deleteBlogData from '../Redux/thunk/deleteBlogData';
+import { useNavigate } from 'react-router-dom';
 
 
 const BlogLIst = () => {
@@ -12,8 +13,14 @@ const BlogLIst = () => {
         dispatch(loadBlogData());
     }, []);
 
-    // const state = useSelector((state) => state);
-    console.log(blogs);
+    const navigate = useNavigate();
+
+    const handleNavigate = (id) => {
+        navigate(`/editblog/${id}`)
+    };
+
+
+    // console.log(blogs);
     return (
         <div className='flex flex-col justify-center items-center h-full w-full '>
             <div className='w-full max-w-7xl mx-auto rounded-lg  bg-white shadow-lg border border-gray-200'>
@@ -66,9 +73,9 @@ const BlogLIst = () => {
                                         </div>
                                     </td>
                                     <td className='p-2'>
-                                        <div className='text-left font-medium text-indigo-500'>
-                                            {_id}
-                                            {/* <FaEdit className='w-6 h-6' /> */}
+                                        <div onClick={() => handleNavigate(_id)} className='btn btn-sm btn-ghost text-left font-medium text-indigo-500'>
+
+                                            <FaEdit className='w-6 h-6' />
                                         </div>
                                     </td>
                                     <td className='p-2'>
