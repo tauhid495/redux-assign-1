@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
 
 
-
-
 const ProductCardFull = () => {
     const { id } = useParams();
     const dispatch = useDispatch();

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { addToHistory } from '../Redux/actionCreator/actionCreator';
 
 
-
 const ProductCard = ({ blog, history }) => {
 
     const dispatch = useDispatch();

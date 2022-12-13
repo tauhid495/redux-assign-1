@@ -4,6 +4,9 @@ import loadBlogData from '../Redux/thunk/fetchBlogs';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import deleteBlogData from '../Redux/thunk/deleteBlogData';
 import { useNavigate } from 'react-router-dom';
+import { key } from 'localforage';
+import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
+
 
 
 const BlogLIst = () => {
@@ -16,6 +19,7 @@ const BlogLIst = () => {
     const navigate = useNavigate();
 
     const handleNavigate = (id) => {
+        dispatch(loadBlogbyId(id));
         navigate(`/editblog/${id}`)
     };
 
@@ -53,7 +57,7 @@ const BlogLIst = () => {
 
                         <tbody className='text-sm divide-y divide-gray-100'>
                             {blogs.map(({ subject, name, status, _id }) => (
-                                <tr>
+                                <tr key={_id}>
                                     <td className='p-2'>
                                         <input type='checkbox' className='w-5 h-5' value='id-1' />
                                     </td>
