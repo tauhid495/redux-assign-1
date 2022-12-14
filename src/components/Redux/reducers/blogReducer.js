@@ -1,16 +1,14 @@
-import nextId from "react-id-generator";
+import moment from "moment";
 import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, LOAD_BLOG_ID, POST_BLOG } from "../actionTypes/actionTypes";
 
 const initialState = {
     history: [],
     blogs: [],
-    historyId: 0,
 };
 
 const blogReducer = (state = initialState, action) => {
 
     const inHistory = state.history.find((blog) => blog._id === action.payload._id)
-    const historyId = nextId();
 
 
     // console.log(inHistory);
@@ -18,19 +16,20 @@ const blogReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_TO_HISTORY:
-
+            const now = moment.now();
             if (inHistory) {
                 return {
                     ...state,
-                    history: state.history.filter(
-                        (blog) => blog.id !== action.payload
-                    ),
+                    history: [...state.history.filter(
+                        (blog) => blog._id !== action.payload._id
+                    ), { ...action.payload, date: now }]
+
                 };
             }
             else {
                 return {
                     ...state,
-                    history: [...state.history, { ...action.payload, historyId: historyId }],
+                    history: [...state.history, { ...action.payload, date: now }],
                 };
             }
 

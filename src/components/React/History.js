@@ -8,7 +8,9 @@ const History = () => {
     return (
         <div className=''>
             {
-                blogs.map((blog) => <ProductCard key={blog._id} blog={blog} />)
+                blogs
+                    .sort(function (a, b) { return b.date - a.date })
+                    .map((blog) => <ProductCard key={blog._id} blog={blog} />)
             }
         </div>
     );
