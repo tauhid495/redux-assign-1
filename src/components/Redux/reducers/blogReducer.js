@@ -1,18 +1,38 @@
+import nextId from "react-id-generator";
 import { ADD_TO_HISTORY, DELETE_BLOG, LOAD_BLOG, LOAD_BLOG_ID, POST_BLOG } from "../actionTypes/actionTypes";
 
 const initialState = {
     history: [],
     blogs: [],
+    historyId: 0,
 };
 
 const blogReducer = (state = initialState, action) => {
+
+    const inHistory = state.history.find((blog) => blog._id === action.payload._id)
+    const historyId = nextId();
+
+
+    // console.log(inHistory);
+
     switch (action.type) {
 
         case ADD_TO_HISTORY:
-            return {
-                ...state,
-                history: [...state.history, action.payload],
-            };
+
+            if (inHistory) {
+                return {
+                    ...state,
+                    history: state.history.filter(
+                        (blog) => blog.id !== action.payload
+                    ),
+                };
+            }
+            else {
+                return {
+                    ...state,
+                    history: [...state.history, { ...action.payload, historyId: historyId }],
+                };
+            }
 
         case LOAD_BLOG:
             return {
