@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import loadBlogData from '../Redux/thunk/fetchBlogs';
+import loadBlogData from '../Redux/thunk/GET_CONTENT';
 import ProductCard from './BlogCard';
 import { toggleDateTime, toggleGender, toggleStatus } from '../Redux/actionCreator/filterAction';
 
@@ -54,7 +54,9 @@ const Home = () => {
         <div>
             <div className='w-full flex items-center justify-end'>
                 <p className='mr-5 text-xl font-semibold'>Filters :</p>
-                <button onClick={() => dispatch(toggleDateTime())} className={`mr-3 btn btn-sm btn-outline btn-primary ${toggleTime ? activeClass : null}`}>Last Post </button>
+                <button onClick={() => dispatch(toggleDateTime())} className={`mr-3 btn btn-sm btn-outline btn-primary ${toggleTime ? activeClass : null}`}>Last Upload </button>
+
+                <button onClick={() => dispatch(toggleDateTime())} className={`mr-3 btn btn-sm btn-outline btn-primary ${!toggleTime ? activeClass : null}`}>First Upload </button>
 
                 <button onClick={() => dispatch(toggleGender('male'))} className={`mr-3 btn btn-sm btn-outline btn-primary ${gender.includes('male') ? activeClass : null}`}>Male</button>
 

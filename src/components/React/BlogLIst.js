@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import loadBlogData from '../Redux/thunk/fetchBlogs';
+import loadBlogData from '../Redux/thunk/GET_CONTENT';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
-import deleteBlogData from '../Redux/thunk/deleteBlogData';
+import deleteBlogData from '../Redux/thunk/DELETE_CONTENT';
 import { useNavigate } from 'react-router-dom';
-import { key } from 'localforage';
 import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
 
 

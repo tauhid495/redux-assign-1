@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
-import editBlogData from '../Redux/thunk/editBlogData';
+// import { loadBlogbyId } from '../Redux/actionCreator/actionCreator';
+import editBlogData from '../Redux/thunk/EDIT_CONTENT';
 
 const BlogEdit = () => {
     const { id } = useParams();

@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import postBlogData from '../Redux/thunk/postBlogData';
+import ADD_CONTENT from '../Redux/thunk/ADD_CONTENT';
 
 const Post = () => {
 
@@ -23,7 +23,7 @@ const Post = () => {
 
         };
         console.log(blog);
-        dispatch(postBlogData(blog));
+        dispatch(ADD_CONTENT(blog));
 
         reset();
     };
@@ -54,14 +54,6 @@ const Post = () => {
                     </label>
                     <input className='input input-bordered' type='text' id='subject' {...register("subject")} />
                 </div>
-
-                {/* <div className='flex flex-col w-full max-w-xs'>
-                    <label className='mb-2' htmlFor='date'>
-                        Posting Date
-                    </label>
-                    <input className='input input-bordered' type='date' id='date' {...register("date")} />
-                </div> */}
-
 
                 <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-3' htmlFor='gender'>
