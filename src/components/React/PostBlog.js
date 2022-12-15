@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -14,14 +15,14 @@ const Post = () => {
             name: data.name,
             occupation: data.occupation,
             subject: data.subject,
-            date: data.date,
+            date: moment.now(),
             gender: data.gender,
             image: data.image,
             textarea: data.textarea,
             status: data.status === "true" ? true : false,
 
         };
-        // console.log(blog);
+        console.log(blog);
         dispatch(postBlogData(blog));
 
         reset();
@@ -54,12 +55,12 @@ const Post = () => {
                     <input className='input input-bordered' type='text' id='subject' {...register("subject")} />
                 </div>
 
-                <div className='flex flex-col w-full max-w-xs'>
+                {/* <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='date'>
                         Posting Date
                     </label>
                     <input className='input input-bordered' type='date' id='date' {...register("date")} />
-                </div>
+                </div> */}
 
 
                 <div className='flex flex-col w-full max-w-xs'>
@@ -82,7 +83,7 @@ const Post = () => {
                     <label className='mb-2' htmlFor='textarea'>
                         Description
                     </label>
-                    <textarea className='input input-bordered' type='textarea' id='text' {...register("textarea")} />
+                    <textarea className='input input-bordered h-32' type='textarea' id='text' {...register("textarea")} />
                 </div>
 
                 <div className='flex text-start w-1/2 '>

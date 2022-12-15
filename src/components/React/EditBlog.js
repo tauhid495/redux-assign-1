@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ const BlogEdit = () => {
             name: data.name,
             occupation: data.occupation,
             subject: data.subject,
-            date: data.date,
+            date: moment.now(),
             gender: data.gender,
             image: data.image,
             textarea: data.textarea,
@@ -59,12 +60,12 @@ const BlogEdit = () => {
                     <input className='input input-bordered' defaultValue={blog.subject} type='text' id='subject' {...register("subject")} />
                 </div>
 
-                <div className='flex flex-col w-full max-w-xs'>
+                {/* <div className='flex flex-col w-full max-w-xs'>
                     <label className='mb-2' htmlFor='date'>
                         Posting Date
                     </label>
                     <input className='input input-bordered' defaultValue={blog.date} type='date' id='date' {...register("date")} />
-                </div>
+                </div> */}
 
 
                 <div className='flex flex-col w-full max-w-xs'>
