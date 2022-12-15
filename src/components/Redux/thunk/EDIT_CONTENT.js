@@ -3,7 +3,7 @@
 const editBlogData = (blog, id) => {
     console.log(blog);
     return async (dispatch, getState) => {
-        const res = await fetch(`http://localhost:5000/blog/${id}`, {
+        const res = await fetch(`https://redux-start-server-production.up.railway.app/blog/${id}`, {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
