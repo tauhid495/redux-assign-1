@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import loadBlogData from '../Redux/thunk/fetchBlogs';
 import ProductCard from './BlogCard';
-import moment from 'moment';
-import { toggleGender, toggleStatus } from '../Redux/actionCreator/filterAction';
+import { toggleDateTime, toggleGender, toggleStatus } from '../Redux/actionCreator/filterAction';
 
 const Home = () => {
     const blogs = useSelector((state) => state.blog.blogs);
     const history = useSelector((state) => state.blog.history);
     const filters = useSelector((state) => state.filter)
-    const { gender, status } = filters;
-    console.log(status);
+    const { gender, status, toggleTime } = filters;
+    // console.log(status);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,10 +18,19 @@ const Home = () => {
 
     const activeClass = "btn-active";
 
+    // const filterByTime = '.sort(function (a, b) { return b.date - a.date })';
+
     let content;
 
-    if (blogs.length) {
-        content = blogs.map((blog) => <ProductCard blog={blog} history={history} key={blog._id} />)
+    if (blogs.length && toggleTime) {
+        content = blogs
+            .sort(function (a, b) { return b.date - a.date })
+            .map((blog) => <ProductCard blog={blog} history={history} key={blog._id} />)
+    } else {
+        content = blogs
+        content = blogs
+            .sort(function (a, b) { return a.date - b.date })
+            .map((blog) => <ProductCard blog={blog} history={history} key={blog._id} />)
     }
 
     if (blogs.length && (status || gender.length)) {
@@ -46,7 +53,8 @@ const Home = () => {
     return (
         <div>
             <div className='w-full flex items-center justify-end'>
-                <button className="mr-3 btn btn-outline btn-sm btn-primary btn-active">Last Posted</button>
+                <p className='mr-5 text-xl font-semibold'>Filters :</p>
+                <button onClick={() => dispatch(toggleDateTime())} className={`mr-3 btn btn-sm btn-outline btn-primary ${toggleTime ? activeClass : null}`}>Last Post </button>
 
                 <button onClick={() => dispatch(toggleGender('male'))} className={`mr-3 btn btn-sm btn-outline btn-primary ${gender.includes('male') ? activeClass : null}`}>Male</button>
 
@@ -56,8 +64,7 @@ const Home = () => {
             </div>
 
             <div className='grid grid-cols-2'>
-                {/* <div>{now}</div>
-            <div>{nowU}</div> */}
+
                 {
                     content
                 }

@@ -1,9 +1,10 @@
-import { TOGGLE_GENDER, TOGGLE_STATUS } from "../actionTypes/actionTypes";
+import { TOGGLE_DATE_TIME, TOGGLE_GENDER, TOGGLE_STATUS } from "../actionTypes/actionTypes";
 
 export const initialState = {
 
     gender: [],
     status: false,
+    toggleTime: false,
 
     keyword: '',
 };
@@ -28,6 +29,13 @@ export const filterReducer = (state = initialState, action) => {
                 ...state,
                 status: !state.status,
             };
+
+        case TOGGLE_DATE_TIME:
+            return {
+                ...state,
+                toggleTime: !state.toggleTime,
+            };
+
 
         default:
             return state;
