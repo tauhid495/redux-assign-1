@@ -3,7 +3,7 @@ import { deleteBlog } from "../actionCreator/actionCreator";
 const deleteBlogData = (id) => {
 
     return async (dispatch, getState) => {
-        const res = await fetch(`https://redux-start-server-production.up.railway.app/blog/${id}`, {
+        const res = await fetch(`https://redux-server.onrender.com/blog/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",

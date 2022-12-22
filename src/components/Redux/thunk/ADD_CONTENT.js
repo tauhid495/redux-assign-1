@@ -2,7 +2,7 @@ import { postBlog } from "../actionCreator/actionCreator";
 
 const postBlogData = (blog) => {
     return async (dispatch, getState) => {
-        const res = await fetch('https://redux-start-server-production.up.railway.app/blog', {
+        const res = await fetch('https://redux-server.onrender.com/blog', {
             method: "POST",
             body: JSON.stringify(blog),
             headers: {

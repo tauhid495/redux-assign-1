@@ -2,7 +2,7 @@ import { loadBlog } from "../actionCreator/actionCreator";
 
 const loadBlogData = () => {
     return async (dispatch, getState) => {
-        const res = await fetch('https://redux-start-server-production.up.railway.app/blogs');
+        const res = await fetch('https://redux-server.onrender.com/blogs');
         const data = await res.json();
         if (data.data.length) {
             dispatch(loadBlog(data.data));
