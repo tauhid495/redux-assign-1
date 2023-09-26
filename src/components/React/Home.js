@@ -9,7 +9,7 @@ const Home = () => {
     const history = useSelector((state) => state.blog.history);
     const filters = useSelector((state) => state.filter)
     const { gender, status, toggleTime } = filters;
-    // console.log(status);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -18,7 +18,6 @@ const Home = () => {
 
     const activeClass = "btn-active";
 
-    // const filterByTime = '.sort(function (a, b) { return b.date - a.date })';
 
     let content;
 
@@ -65,12 +64,18 @@ const Home = () => {
                 <button onClick={() => dispatch(toggleStatus())} className={`mr-3 btn btn-sm btn-outline btn-primary ${status ? activeClass : null}`}>Child</button>
             </div>
 
-            <div className='grid grid-cols-2'>
 
-                {
-                    content
-                }
-            </div>
+
+            {
+                content.length == 0 ?
+                    <div className='text-center mt-24'>Please wait. Server is not responding!
+                    </div>
+                    :
+                    <div className='grid grid-cols-2'>
+                        {content}
+                    </div>
+            }
+
         </div>
     );
 };
